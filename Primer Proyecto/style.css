@@ -1,0 +1,317 @@
+/* --- Reset básico y fuentes --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #eef2f7; /* Fondo general más suave */
+    color: #333a4d; /* Texto principal oscuro pero no negro puro */
+    padding-bottom: 60px; /* Espacio para el footer fijo (si lo hubiera) */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- Header y Footer --- */
+.main-header {
+    background-color: #4a76a8; /* Azul principal */
+    color: #ffffff;
+    padding: 15px 30px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.main-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: 500;
+}
+
+.main-footer {
+    background-color: #34495e; /* Gris azulado oscuro */
+    color: #bdc3c7; /* Texto gris claro */
+    text-align: center;
+    padding: 15px;
+    margin-top: auto; /* Empuja el footer hacia abajo */
+    font-size: 0.9em;
+}
+
+/* --- Contenedor Principal y Tarjetas --- */
+.container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px; /* Espacio lateral */
+    flex-grow: 1; /* Ocupa el espacio restante */
+}
+
+.card {
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    margin-bottom: 30px;
+    border: 1px solid #e0e6ed;
+}
+
+h2 {
+    color: #2c5282; /* Azul más oscuro para títulos de sección */
+    border-bottom: 2px solid #e0e6ed;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1em;
+    color: #5a6275;
+}
+
+/* --- Sección de Carga --- */
+.file-upload-wrapper {
+    position: relative;
+    display: inline-block; /* O block si quieres que ocupe todo el ancho */
+    margin-bottom: 10px;
+}
+
+#excelFile {
+   /* Oculta el input por defecto pero mantenlo accesible */
+    position: absolute;
+    left: -9999px;
+}
+
+.file-upload-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #5c9ded; /* Azul más brillante para el botón de carga */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 500;
+}
+
+.file-upload-label:hover {
+    background-color: #4a8ad8;
+}
+
+.file-name {
+    font-style: italic;
+    color: #777;
+    margin-top: 5px;
+    font-size: 0.9em;
+}
+
+/* --- Mensajes --- */
+.message {
+    margin-top: 15px;
+    padding: 12px 18px;
+    border-radius: 6px;
+    font-weight: 500;
+    border: 1px solid transparent;
+    font-size: 0.95em;
+}
+
+.success {
+    background-color: #e6f7f0; /* Verde muy pálido */
+    color: #1a7f5a; /* Verde oscuro */
+    border-color: #a6e3c7;
+}
+
+.error {
+    background-color: #fdeded; /* Rojo muy pálido */
+    color: #c73e3e; /* Rojo oscuro */
+    border-color: #f8c6c6;
+}
+
+.warning {
+    background-color: #fff8e1; /* Amarillo muy pálido */
+    color: #8c6d1f; /* Amarillo/marrón oscuro */
+    border-color: #ffe4a1;
+}
+.info { /* Para mensajes neutros como "Procesando..." */
+    background-color: #e7f3fe; /* Azul muy pálido */
+    color: #3a70a1;
+    border-color: #b8d8f5;
+}
+
+
+/* --- Lista de Estudiantes --- */
+#studentListContainer {
+    max-height: 350px;
+    overflow-y: auto;
+    border: 1px solid #e0e6ed;
+    padding: 15px;
+    background-color: #f8faff; /* Fondo ligeramente azulado para la lista */
+    border-radius: 8px;
+}
+
+#studentList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#studentList li {
+    padding: 10px 5px;
+    border-bottom: 1px dashed #d1d9e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.95em;
+}
+#studentList li:last-child {
+    border-bottom: none;
+}
+
+/* Colores para Género en la Lista */
+.gender-f::after { /* Pseudo-elemento para el indicador */
+    content: 'Mujer';
+    background-color: #fceded; /* Rosa pálido */
+    color: #c2185b; /* Rosa oscuro */
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+.gender-m::after {
+    content: 'Hombre';
+    background-color: #e7f3fe; /* Azul pálido */
+    color: #1976d2; /* Azul medio */
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    font-weight: 500;
+    margin-left: 10px;
+}
+
+
+/* --- Sección de Generación de Grupos --- */
+.group-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Espacio entre elementos */
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Para pantallas pequeñas */
+}
+
+.group-controls label {
+    font-weight: 500;
+    color: #333a4d;
+}
+
+#numGroups {
+    padding: 8px 12px;
+    border: 1px solid #ced4da;
+    border-radius: 6px;
+    width: 80px; /* Ancho fijo para el número */
+    text-align: center;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#numGroups:focus {
+    border-color: #5c9ded;
+    box-shadow: 0 0 0 3px rgba(92, 157, 237, 0.2);
+    outline: none;
+}
+
+#generateGroupsBtn {
+    padding: 10px 20px;
+    background-color: #28a745; /* Verde para el botón de generar */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+#generateGroupsBtn:hover:not(:disabled) {
+    background-color: #218838; /* Verde más oscuro al pasar el ratón */
+}
+
+#generateGroupsBtn:disabled {
+    background-color: #a0aec0; /* Gris claro cuando está desactivado */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* --- Resultados de Grupos --- */
+#groupResultsContainer h2 { /* Estilo un poco diferente para el título de resultados */
+    margin-top: 30px;
+    border-bottom: none; /* Quitar borde inferior aquí */
+    color: #4a76a8; /* Azul principal */
+    font-size: 1.3em;
+}
+
+#groupResults {
+    display: grid;
+    /* Columnas adaptables: mínimo 220px, máximo 1fr (fracción igual) */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px; /* Espacio entre cajas de grupo */
+    margin-top: 15px;
+}
+
+.group-box {
+    border: 1px solid #d1d9e6;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #ffffff;
+    transition: box-shadow 0.3s ease;
+}
+
+.group-box:hover {
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* Sombra sutil al pasar el ratón */
+}
+
+.group-box h3 {
+    margin-top: 0;
+    color: #3a70a1; /* Azul/Gris para título de grupo */
+    border-bottom: 1px solid #eef2f7;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    font-size: 1.15em;
+    font-weight: 600;
+}
+
+.group-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.group-box li {
+    padding: 6px 0;
+    font-size: 0.95em;
+    color: #49505f;
+    border-bottom: 1px dotted #e9ecef; /* Separador más sutil */
+    display: flex;
+    justify-content: space-between; /* Para alinear el indicador de género si lo quieres aquí también */
+    align-items: center;
+}
+.group-box li:last-child {
+    border-bottom: none;
+}
+
+/* Indicadores de género dentro del grupo (opcional, similar a la lista) */
+.group-box li.gender-f::after {
+    content: 'F'; /* Más corto aquí */
+    font-weight: bold;
+    color: #c2185b;
+    margin-left: 8px;
+    font-size: 0.85em;
+}
+.group-box li.gender-m::after {
+     content: 'M';
+    font-weight: bold;
+    color: #1976d2;
+     margin-left: 8px;
+     font-size: 0.85em;
+}

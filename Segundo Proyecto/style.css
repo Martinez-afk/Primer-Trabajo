@@ -1,0 +1,155 @@
+/* --- Estilos Generales --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente más moderna */
+    line-height: 1.6;
+    margin: 0; /* Sin margen exterior */
+    padding: 0; /* Sin relleno exterior */
+    background: linear-gradient(to bottom right, #e0f7fa, #b2ebf2); /* Fondo degradado suave (cian claro) */
+    color: #333; /* Color de texto principal oscuro */
+    display: flex; /* Para centrar el contenido */
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Asegura que ocupe toda la altura */
+    padding: 20px; /* Añade un poco de espacio alrededor si el contenido es grande */
+    box-sizing: border-box; /* Incluye padding en el tamaño total */
+}
+
+/* Contenedor principal para centrar y limitar ancho */
+.container {
+    background-color: #ffffff; /* Fondo blanco para el contenido */
+    padding: 30px 40px;
+    border-radius: 12px; /* Bordes más redondeados */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+    max-width: 600px; /* Ancho máximo para que no se estire demasiado */
+    width: 100%; /* Ocupa el ancho disponible hasta el máximo */
+    box-sizing: border-box;
+}
+
+
+/* --- Títulos --- */
+h1, h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600; /* Un poco más grueso */
+}
+
+h1 {
+    color: #00796b; /* Verde azulado oscuro */
+    font-size: 2em; /* Más grande */
+}
+
+h2 {
+    color: #0097a7; /* Cian oscuro */
+    font-size: 1.5em;
+    border-bottom: 2px solid #b2dfdb; /* Línea sutil debajo */
+    padding-bottom: 10px;
+    margin-top: 30px; /* Espacio antes de cada sección */
+}
+
+h2:first-of-type {
+    margin-top: 0; /* Sin margen superior para el primer h2 */
+}
+
+/* --- Secciones de Calculadora --- */
+/* (Ya no necesitamos .calculadora si usamos el .container general, pero lo dejamos por si quieres secciones separadas visualmente dentro del container) */
+.calculadora {
+    margin-bottom: 20px; /* Espacio entre secciones si las usas */
+}
+
+
+/* --- Grupos de Inputs (Label + Input) --- */
+.input-group {
+    margin-bottom: 18px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500; /* Ligeramente en negrita */
+    color: #455a64; /* Gris azulado */
+    font-size: 0.95em;
+}
+
+.input-group input[type="number"] {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    padding: 12px 15px; /* Más relleno interior */
+    border: 1px solid #b0bec5; /* Borde gris claro */
+    border-radius: 6px; /* Bordes redondeados */
+    font-size: 1rem;
+    box-sizing: border-box; /* Importante para que el padding no aumente el tamaño total */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transición suave */
+}
+
+/* Efecto al enfocar un input */
+.input-group input[type="number"]:focus {
+    border-color: #00796b; /* Borde del color primario */
+    box-shadow: 0 0 0 3px rgba(0, 121, 107, 0.2); /* Sombra sutil al enfocar */
+    outline: none; /* Quitar el contorno por defecto del navegador */
+}
+
+
+/* --- Botones --- */
+button {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    background-color: #00897b; /* Verde azulado principal */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    margin-top: 20px; /* Espacio antes del botón */
+    letter-spacing: 0.5px; /* Espacio ligero entre letras */
+}
+
+button:hover {
+    background-color: #00695c; /* Verde azulado más oscuro al pasar el mouse */
+    transform: translateY(-2px); /* Pequeño efecto de elevación */
+}
+
+button:active {
+    transform: translateY(0); /* Vuelve a la posición original al hacer clic */
+}
+
+
+/* --- Área de Resultados --- */
+.resultado {
+    margin-top: 25px;
+    padding: 15px 20px;
+    border-radius: 6px;
+    font-weight: 500; /* Un poco más ligero que negrita */
+    text-align: center;
+    border: 1px solid transparent; /* Borde base transparente */
+    font-size: 1.05em;
+    line-height: 1.5;
+}
+
+/* Clases para diferentes tipos de resultado */
+.resultado.exito {
+    background-color: #e8f5e9; /* Verde muy claro */
+    color: #2e7d32; /* Verde oscuro */
+    border-color: #a5d6a7; /* Borde verde claro */
+}
+
+.resultado.error {
+    background-color: #ffebee; /* Rojo muy claro */
+    color: #c62828; /* Rojo oscuro */
+    border-color: #ef9a9a; /* Borde rojo claro */
+}
+
+.resultado.info {
+    background-color: #e1f5fe; /* Azul muy claro */
+    color: #0277bd; /* Azul oscuro */
+    border-color: #90caf9; /* Borde azul claro */
+}
+
+/* --- Separador Horizontal --- */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 121, 107, 0.5), rgba(0, 0, 0, 0)); /* Degradado para la línea */
+    margin: 40px 0; /* Más espacio alrededor del separador */
+}

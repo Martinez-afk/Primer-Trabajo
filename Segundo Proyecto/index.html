@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Notas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Añade este div contenedor -->
+    <div class="container">
+
+        <h1>Calculadora de Notas Universitarias</h1>
+
+        <!-- Sección para Calcular Nota Final -->
+        <section class="calculadora">
+            <h2>Calcular Nota Final</h2>
+            <p>Ingresa las notas de los tres cortes (0 a 5).</p>
+            <div class="input-group">
+                <label for="nota1">Nota Corte 1 (30%):</label>
+                <input type="number" id="nota1" step="0.1" min="0" max="5" placeholder="Ej: 3.5">
+            </div>
+            <div class="input-group">
+                <label for="nota2">Nota Corte 2 (30%):</label>
+                <input type="number" id="nota2" step="0.1" min="0" max="5" placeholder="Ej: 4.0">
+            </div>
+            <div class="input-group">
+                <label for="nota3">Nota Corte 3 (40%):</label>
+                <input type="number" id="nota3" step="0.1" min="0" max="5" placeholder="Ej: 2.8">
+            </div>
+            <button id="btnCalcularFinal">Calcular Nota Final</button>
+            <div id="resultadoFinal" class="resultado"></div>
+        </section>
+
+        <hr> <!-- Separador visual -->
+
+        <!-- Sección para Calcular Nota de Ensueño -->
+        <section class="calculadora">
+            <h2>Calcular Nota de Ensueño</h2>
+            <p>Ingresa la nota final que deseas y las notas que ya tienes (deja vacíos los cortes que no conoces).</p>
+            <div class="input-group">
+                <label for="notaDeseada">Nota Final Deseada (0 a 5):</label>
+                <input type="number" id="notaDeseada" step="0.1" min="0" max="5" placeholder="Ej: 3.0">
+            </div>
+            <div class="input-group">
+                <label for="nota1Conocida">Nota Corte 1 (30%):</label>
+                <input type="number" id="nota1Conocida" step="0.1" min="0" max="5" placeholder="Nota si la tienes">
+            </div>
+            <div class="input-group">
+                <label for="nota2Conocida">Nota Corte 2 (30%):</label>
+                <input type="number" id="nota2Conocida" step="0.1" min="0" max="5" placeholder="Nota si la tienes">
+            </div>
+            <div class="input-group">
+                <label for="nota3Conocida">Nota Corte 3 (40%):</label>
+                <input type="number" id="nota3Conocida" step="0.1" min="0" max="5" placeholder="Nota si la tienes">
+            </div>
+            <button id="btnCalcularNecesaria">Calcular Nota Necesaria</button>
+            <div id="resultadoNecesaria" class="resultado"></div>
+        </section>
+
+    </div> <!-- Cierra el div container -->
+
+    <script src="script.js"></script>
+</body>
+</html>

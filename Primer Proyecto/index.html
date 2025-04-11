@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Grupos Aleatorios</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Incluir la librería SheetJS (xlsx) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <header class="main-header">
+        <h1>Generador de Grupos de Estudiantes</h1>
+    </header>
+
+    <div class="container">
+        <section id="upload-section" class="card">
+            <h2>1. Cargar Archivo Excel</h2>
+            <p>Sube un archivo .xlsx o .xls (máx. 50MB) con los nombres en la Columna A y el género ('F' o 'M') en la Columna B.</p>
+            <div class="file-upload-wrapper">
+                 <input type="file" id="excelFile" accept=".xlsx, .xls">
+                 <label for="excelFile" class="file-upload-label">Seleccionar Archivo</label>
+            </div>
+
+            <p id="upload-message" class="message"></p>
+             <p id="file-name-display" class="file-name"></p> <!-- Para mostrar el nombre del archivo -->
+        </section>
+
+        <section id="list-section" class="card" style="display: none;">
+            <h2>2. Lista de Estudiantes</h2>
+            <div id="studentListContainer">
+                <ul id="studentList"></ul>
+            </div>
+        </section>
+
+        <section id="group-section" class="card" style="display: none;">
+            <h2>3. Generar Grupos</h2>
+            <div class="group-controls">
+                <label for="numGroups">Número de Grupos:</label>
+                <input type="number" id="numGroups" min="1" value="2">
+                <button id="generateGroupsBtn" disabled>Generar Grupos</button>
+            </div>
+             <p id="group-warning" class="message warning"></p>
+            <div id="groupResultsContainer">
+                <h2>Grupos Generados:</h2>
+                <div id="groupResults"></div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="main-footer">
+        <p>© 2023 Tu Nombre o Institución Educativa</p>
+    </footer>
+
+    <script src="script.js" defer></script> <!-- Añadido defer -->
+</body>
+</html>
