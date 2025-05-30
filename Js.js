@@ -1,141 +1,81 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const nombreParticipanteInput = document.getElementById('nombreParticipante');
-    const agregarParticipanteBtn = document.getElementById('agregarParticipanteBtn');
-    const listaParticipantesUI = document.getElementById('listaParticipantes');
-    const numeroEquiposInput = document.getElementById('numeroEquipos');
-    const generarEquiposBtn = document.getElementById('generarEquiposBtn');
-    const resultadoEquiposUI = document.getElementById('resultadoEquipos');
+// --- ARRAY ---
+// Array inicial de tareas
+let tareas = ["Hacer la compra", "Estudiar JavaScript", "Pasear al perro"];
 
-    let participantes = []; // Array para almacenar los nombres de los participantes
+// --- ELEMENTOS DEL DOM ---
+// Obtenemos referencias a los elementos HTML con los que vamos a interactuar
+const listaTareasDiv = document.getElementById('lista-tareas-div');
+const nuevaTareaInput = document.getElementById('nueva-tarea-input');
+const btnAgregar = document.getElementById('btn-agregar');
+const btnContar = document.getElementById('btn-contar');
+const cantidadTareasP = document.getElementById('cantidad-tareas-p');
 
-    // --- FUNCIONES ---
+// --- FUNCIONES ---
 
-    /**
-     * Función para renderizar la lista de participantes en el UI.
-     */
-    function renderizarParticipantes() {
-        listaParticipantesUI.innerHTML = ''; // Limpiar la lista actual
-        participantes.forEach((participante, index) => {
-            const li = document.createElement('li');
-            li.textContent = participante;
-            
-            const removeBtn = document.createElement('button');
-            removeBtn.textContent = 'Eliminar';
-            removeBtn.classList.add('remove-btn');
-            removeBtn.onclick = () => eliminarParticipante(index); // Asignar función de eliminar
+/**
+ * Función para mostrar las tareas del array en el HTML.
+ * Crea una lista <ul> y elementos <li> para cada tarea.
+ */
+function mostrarTareas() {
+    listaTareasDiv.innerHTML = ''; // Limpia el contenido anterior para evitar duplicados
 
-            li.appendChild(removeBtn);
-            listaParticipantesUI.appendChild(li);
-        });
+    if (tareas.length === 0) {
+        listaTareasDiv.innerHTML = '<p>No hay tareas pendientes.</p>';
+        return;
     }
 
-    /**
-     * Función para agregar un participante al array y actualizar el UI.
-     */
-    function agregarParticipante() {
-        const nombre = nombreParticipanteInput.value.trim();
-        if (nombre === "") {
-            alert("Por favor, ingresa un nombre.");
-            return;
-        }
-        if (participantes.includes(nombre)) {
-            alert("Este participante ya ha sido añadido.");
-            return;
-        }
-        participantes.push(nombre);
-        renderizarParticipantes();
-        nombreParticipanteInput.value = ''; // Limpiar input
-        nombreParticipanteInput.focus();
-    }
-    
-    /**
-     * Función para eliminar un participante del array y actualizar el UI.
-     * @param {number} index - El índice del participante a eliminar.
-     */
-    function eliminarParticipante(index) {
-        participantes.splice(index, 1); // Elimina 1 elemento en el índice 'index'
-        renderizarParticipantes();
-    }
-
-    /**
-     * Función para barajar (desordenar) un array.
-     * Utiliza el algoritmo Fisher-Yates.
-     * @param {Array} array - El array a barajar.
-     * @returns {Array} El array barajado.
-     */
-    function barajarArray(array) {
-        let arrayCopia = [...array]; // Copiar para no modificar el original directamente
-        for (let i = arrayCopia.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [arrayCopia[i], arrayCopia[j]] = [arrayCopia[j], arrayCopia[i]]; // Intercambio
-        }
-        return arrayCopia;
-    }
-
-    /**
-     * Función para generar y mostrar los equipos.
-     */
-    function generarEquipos() {
-        if (participantes.length === 0) {
-            alert("Añade participantes primero.");
-            return;
-        }
-
-        const numEquipos = parseInt(numeroEquiposInput.value);
-        if (isNaN(numEquipos) || numEquipos <= 0) {
-            alert("Número de equipos inválido.");
-            return;
-        }
-        if (numEquipos > participantes.length) {
-            alert("No puedes tener más equipos que participantes.");
-            return;
-        }
-
-        const participantesBarajados = barajarArray(participantes);
-        const equipos = []; // Array de arrays (cada subarray es un equipo)
-
-        // Inicializar los equipos (array de arrays vacíos)
-        for (let i = 0; i < numEquipos; i++) {
-            equipos.push([]);
-        }
-
-        // Distribuir participantes en los equipos
-        let equipoActual = 0;
-        participantesBarajados.forEach(participante => {
-            equipos[equipoActual].push(participante);
-            equipoActual = (equipoActual + 1) % numEquipos; // Avanza al siguiente equipo de forma circular
-        });
-
-        // Mostrar los equipos en el UI
-        resultadoEquiposUI.innerHTML = ''; // Limpiar resultados anteriores
-        equipos.forEach((equipo, index) => {
-            const divEquipo = document.createElement('div');
-            divEquipo.classList.add('equipo');
-
-            const h3 = document.createElement('h3');
-            h3.textContent = `Equipo ${index + 1}`;
-            divEquipo.appendChild(h3);
-
-            const ul = document.createElement('ul');
-            equipo.forEach(miembro => {
-                const li = document.createElement('li');
-                li.textContent = miembro;
-                ul.appendChild(li);
-            });
-            divEquipo.appendChild(ul);
-            resultadoEquiposUI.appendChild(divEquipo);
-        });
-    }
-
-    // --- EVENT LISTENERS ---
-    agregarParticipanteBtn.addEventListener('click', agregarParticipante);
-    nombreParticipanteInput.addEventListener('keypress', (event) => {
-        if (event.key === 'Enter') {
-            agregarParticipante();
-        }
+    const ul = document.createElement('ul'); // Crea un elemento <ul>
+    tareas.forEach(function(tarea) {
+        const li = document.createElement('li'); // Crea un elemento <li>
+        li.textContent = tarea;                  // Establece el texto del <li>
+        ul.appendChild(li);                      // Añade el <li> al <ul>
     });
-    generarEquiposBtn.addEventListener('click', generarEquipos);
+    listaTareasDiv.appendChild(ul); // Añade el <ul> al div contenedor
+}
 
-    // Inicializar la lista de participantes (vacía al principio)
-    renderizarParticipantes();
+/**
+ * Función para agregar una nueva tarea al array y actualizar la vista.
+ */
+function agregarTarea() {
+    const nuevaTareaTexto = nuevaTareaInput.value.trim(); // Obtiene el valor del input y quita espacios
+
+    if (nuevaTareaTexto !== "") {
+        tareas.push(nuevaTareaTexto); // Agrega la nueva tarea al FINAL del array 'tareas'
+        mostrarTareas();             // Vuelve a dibujar la lista de tareas
+        nuevaTareaInput.value = "";  // Limpia el campo de entrada
+        cantidadTareasP.textContent = ""; // Limpia el mensaje de cantidad si estaba visible
+    } else {
+        alert("Por favor, escribe una tarea.");
+    }
+}
+
+/**
+ * Función para mostrar la cantidad total de tareas en el array.
+ */
+function mostrarCantidadDeTareas() {
+    const cantidad = tareas.length; // Obtiene la longitud (cantidad de elementos) del array
+    cantidadTareasP.textContent = `Total de tareas: ${cantidad}`;
+}
+
+// --- EVENT LISTENERS (ESCUCHADORES DE EVENTOS) ---
+// Asignamos funciones a los eventos de los botones
+
+// Cuando se hace clic en el botón 'Agregar Tarea'
+btnAgregar.addEventListener('click', agregarTarea);
+
+// Cuando se presiona Enter en el campo de texto
+nuevaTareaInput.addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+        agregarTarea();
+    }
+});
+
+// Cuando se hace clic en el botón 'Mostrar Cantidad de Tareas'
+btnContar.addEventListener('click', mostrarCantidadDeTareas);
+
+
+// --- INICIALIZACIÓN ---
+// Mostrar las tareas iniciales cuando la página se carga por primera vez
+document.addEventListener('DOMContentLoaded', function() {
+    mostrarTareas();
 });
