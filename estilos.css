@@ -1,0 +1,102 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #eef1f5;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 450px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.8em;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 1.3em;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.entrada-datos {
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.entrada-datos input[type="number"] {
+    flex-grow: 1;
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+.entrada-datos button, .resultados button {
+    padding: 12px 18px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.entrada-datos button {
+    border-radius: 0 5px 5px 0;
+}
+
+.resultados button {
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    margin-bottom: 15px;
+    background-color: #2ecc71; /* Color diferente para el botón de calcular */
+}
+
+.entrada-datos button:hover, .resultados button:hover {
+    opacity: 0.9;
+}
+
+.resultados button:hover {
+    background-color: #27ae60;
+}
+
+#lista-notas-ul {
+    list-style-type: decimal-leading-zero;
+    padding-left: 25px;
+}
+
+#lista-notas-ul li {
+    background-color: #f8f9fa;
+    padding: 8px 12px;
+    margin-bottom: 6px;
+    border-radius: 4px;
+    border: 1px solid #e0e0e0;
+}
+
+#resultado-promedio-p {
+    font-weight: bold;
+    color: #16a085;
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #e8f6f3;
+    border-radius: 5px;
+}
