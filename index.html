@@ -3,29 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejemplo de Funciones y Arrays</title>
-    
-    <!-- Este enlace carga tu archivo de estilos CSS -->
-    <link rel="stylesheet" href="style.css">
+    <title>Ejemplos de Control de Flujo</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 
-    <div class="container">
-        <h1>Uso de Funciones y Arrays</h1>
-        <p>
-            Tenemos un array de estudiantes. Haz clic en el botón para que una función
-            los salude a todos y los muestre en una lista.
-        </p>
+    <main>
+        <h1>Ejemplos de Estructuras y Control de Flujo</h1>
 
-        <button id="boton-saludar">Saludar Estudiantes</button>
+        <!-- Ejemplo 1: Condicional IF-ELSE -->
+        <section>
+            <h2>1. Condicional (if-else)</h2>
+            <p>Introduce un número para saber si es par o impar.</p>
+            <input type="number" id="numeroParImpar" placeholder="Escribe un número">
+            <button id="btnVerificar">Verificar</button>
+            <p class="resultado" id="resultadoParImpar"></p>
+        </section>
 
-        <!-- Aquí se mostrará el resultado generado por JavaScript -->
-        <div id="resultado">
-            <p>Los saludos aparecerán aquí...</p>
-        </div>
-    </div>
+        <!-- Ejemplo 2: Bucle FOR -->
+        <section>
+            <h2>2. Bucle (for)</h2>
+            <p>Introduce un número para generar su tabla de multiplicar.</p>
+            <input type="number" id="numeroTabla" placeholder="Escribe un número">
+            <button id="btnGenerarTabla">Generar Tabla</button>
+            <div class="resultado" id="resultadoTabla"></div>
+        </section>
 
-    <!-- Este enlace carga tu archivo de JavaScript. Se pone al final por buena práctica. -->
+        <!-- Ejemplo 3: Estructura de Datos (Array) y Bucle (forEach) -->
+        <section>
+            <h2>3. Estructura de Datos (Array) y Bucle (forEach)</h2>
+            <p>Haz clic para mostrar una lista de compras.</p>
+            <button id="btnMostrarLista">Mostrar Lista</button>
+            <ul class="resultado" id="resultadoLista"></ul>
+        </section>
+
+        <!-- Ejemplo 4: Condicional SWITCH -->
+        <section>
+            <h2>4. Condicional (switch)</h2>
+            <p>Elige un día de la semana.</p>
+            <select id="opcionDia">
+                <option value="lunes">Lunes</option>
+                <option value="miercoles">Miércoles</option>
+                <option value="viernes">Viernes</option>
+                <option value="domingo">Domingo</option>
+            </select>
+            <button id="btnEvaluarDia">Evaluar Día</button>
+            <p class="resultado" id="resultadoSwitch"></p>
+        </section>
+    </main>
+
+    <!-- Enlazamos el script de JavaScript al final del body -->
     <script src="script.js"></script>
+
 </body>
 </html>

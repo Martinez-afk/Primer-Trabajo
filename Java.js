@@ -1,38 +1,87 @@
-// Este "oyente" espera a que todo el documento HTML esté listo.
-// Es la solución estándar para evitar errores de "elemento no encontrado".
+// Esperamos a que todo el contenido del HTML esté cargado antes de ejecutar el script.
 document.addEventListener('DOMContentLoaded', () => {
 
-    // --- TODO NUESTRO CÓDIGO AHORA VA AQUÍ DENTRO ---
+    // --- Ejemplo 1: Condicional IF-ELSE ---
+    const btnVerificar = document.getElementById('btnVerificar');
+    const inputParImpar = document.getElementById('numeroParImpar');
+    const resultadoParImpar = document.getElementById('resultadoParImpar');
 
-    // PASO 1: DEFINIR DATOS Y ELEMENTOS
-    const estudiantes = ["Ana", "Juan", "Carlos", "Sofía", "Laura"];
-    
-    // Ahora, esta línea se ejecuta cuando es seguro que el botón ya existe.
-    const botonSaludar = document.getElementById('boton-saludar');
-    const divResultado = document.getElementById('resultado');
+    btnVerificar.addEventListener('click', () => {
+        const numero = parseInt(inputParImpar.value); // Convertimos el texto a número entero
 
-    // Si por alguna razón el botón no se encuentra, mostramos un error en la consola.
-    if (!botonSaludar) {
-        console.error("Error: No se encontró el botón con id 'boton-saludar'. Revisa tu HTML.");
-        return; // Detiene la ejecución si el botón no existe.
-    }
-
-    // PASO 2: DEFINIR LA FUNCIÓN
-    function generarListaDeSaludos(listaDeNombres) {
-        let listaHTML = '<ul>';
-        listaDeNombres.forEach(nombre => {
-            listaHTML += `<li>¡Hola, ${nombre}! Bienvenido/a al curso.</li>`;
-        });
-        listaHTML += '</ul>';
-        return listaHTML;
-    }
-
-    // PASO 3: AÑADIR INTERACTIVIDAD (EVENTO)
-    botonSaludar.addEventListener('click', () => {
-        const saludosHTML = generarListaDeSaludos(estudiantes);
-        divResultado.innerHTML = saludosHTML;
+        if (isNaN(numero)) { // Verificamos si la entrada es un número válido
+            resultadoParImpar.textContent = 'Por favor, introduce un número válido.';
+        } else if (numero % 2 === 0) {
+            resultadoParImpar.textContent = `El número ${numero} es PAR.`;
+        } else {
+            resultadoParImpar.textContent = `El número ${numero} es IMPAR.`;
+        }
     });
 
-    console.log("Script cargado y listo para funcionar.");
+    // --- Ejemplo 2: Bucle FOR ---
+    const btnGenerarTabla = document.getElementById('btnGenerarTabla');
+    const inputTabla = document.getElementById('numeroTabla');
+    const resultadoTabla = document.getElementById('resultadoTabla');
+
+    btnGenerarTabla.addEventListener('click', () => {
+        const numero = parseInt(inputTabla.value);
+        let tablaHTML = ''; // Variable para construir el resultado
+
+        if (isNaN(numero)) {
+            resultadoTabla.innerHTML = 'Introduce un número válido.';
+            return; // Salimos de la función
+        }
+
+        // Bucle que se repite 10 veces
+        for (let i = 1; i <= 10; i++) {
+            tablaHTML += `${numero} x ${i} = ${numero * i}<br>`; // Concatenamos cada línea
+        }
+        resultadoTabla.innerHTML = tablaHTML; // Mostramos el resultado en el div
+    });
+
+    // --- Ejemplo 3: Array y Bucle forEach ---
+    const btnMostrarLista = document.getElementById('btnMostrarLista');
+    const resultadoLista = document.getElementById('resultadoLista');
+    const listaDeCompras = ['Leche', 'Pan', 'Huevos', 'Fruta', 'Verduras']; // Estructura de datos: Array
+
+    btnMostrarLista.addEventListener('click', () => {
+        resultadoLista.innerHTML = ''; // Limpiamos la lista anterior
+
+        // Recorremos cada elemento del array
+        listaDeCompras.forEach(item => {
+            const li = document.createElement('li'); // Creamos un elemento <li>
+            li.textContent = item; // Le ponemos el texto del item
+            resultadoLista.appendChild(li); // Lo añadimos a la lista <ul>
+        });
+    });
+
+    // --- Ejemplo 4: Condicional SWITCH ---
+    const btnEvaluarDia = document.getElementById('btnEvaluarDia');
+    const selectDia = document.getElementById('opcionDia');
+    const resultadoSwitch = document.getElementById('resultadoSwitch');
+
+    btnEvaluarDia.addEventListener('click', () => {
+        const diaSeleccionado = selectDia.value;
+        let mensaje = '';
+
+        switch (diaSeleccionado) {
+            case 'lunes':
+                mensaje = '¡Ánimo, empieza la semana!';
+                break;
+            case 'miercoles':
+                mensaje = '¡Ya estamos a mitad de semana!';
+                break;
+            case 'viernes':
+                mensaje = '¡Por fin es viernes! ¡A disfrutar!';
+                break;
+            case 'domingo':
+                mensaje = 'Día de descanso y relax.';
+                break;
+            default:
+                mensaje = 'Selecciona una opción válida.';
+                break;
+        }
+        resultadoSwitch.textContent = mensaje;
+    });
 
 });
